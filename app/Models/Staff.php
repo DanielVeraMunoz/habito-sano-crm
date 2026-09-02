@@ -3,7 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
+use Database\Factories\StaffFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,10 +12,18 @@ use Illuminate\Notifications\Notifiable;
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+class Staff extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
+    /** @use HasFactory<StaffFactory> */
     use HasFactory, Notifiable;
+
+    /**
+     * The table associated with the model.
+     *
+     * "staff" is a mass noun (no natural plural), so Eloquent's automatic
+     * pluralization can't be trusted to guess it — set it explicitly.
+     */
+    protected $table = 'staff';
 
     /**
      * Get the attributes that should be cast.
