@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('weekly_checkins', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('patient_id')->constrained();
+            $table->foreignId('recorded_by')->constrained('staff');
+            $table->date('date');
+            $table->decimal('weight', 5, 2);
+            $table->text('habits')->nullable();
+            $table->text('notes')->nullable();
+            $table->boolean('five_meals')->default(false);
             $table->timestamps();
         });
     }
