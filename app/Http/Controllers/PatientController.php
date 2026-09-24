@@ -32,4 +32,9 @@ class PatientController extends Controller
 
         return redirect()->route('patients.index');
     }
+
+    public function show(Patient $patient): View
+    {
+        return view('patients.show', ['patient' => $patient]);
+    }
 }
