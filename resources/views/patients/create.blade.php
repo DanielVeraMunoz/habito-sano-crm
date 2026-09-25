@@ -107,6 +107,7 @@
 
 
                     <button type="submit">Guardar</button>
+                    <a href="{{ route('patients.index') }}" class="ml-2 text-sm text-gray-600">Cancelar</a>
                 </form>
             </div>
         </div>

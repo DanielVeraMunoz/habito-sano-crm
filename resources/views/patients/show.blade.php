@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $patient->name }} {{ $patient->surname }}
-        </h2>
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ $patient->name }} {{ $patient->surname }}
+            </h2>
+            <a href="{{ route('patients.edit', $patient) }}" class="text-sm text-blue-600">Editar</a>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -18,8 +21,10 @@
                 <p><strong>Plan de dieta:</strong> {{ $patient->diet_plan }}</p>
             </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 mt-6">
-                <h3 class="font-semibold text-lg mb-4">Check-ins semanales</h3>
-
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-semibold text-lg">Check-ins semanales</h3>
+                    <a href="{{ route('weekly_checkins.create', $patient) }}" class="text-sm text-blue-600">Añadir check-in</a>
+                </div>
                 <table class="w-full text-left">
                     <thead>
                         <tr>
