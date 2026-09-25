@@ -107,6 +107,7 @@
                     </div>
 
                     <button type="submit">Guardar</button>
+                    <a href="{{ route('patients.show', $patient) }}" class="ml-2 text-sm text-gray-600">Cancelar</a>
                 </form>
             </div>
         </div>

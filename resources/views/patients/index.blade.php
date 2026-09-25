@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
+        <div class="flex justify-between items-center">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Pacientes') }}
         </h2>
+        <a href="{{ route('patients.create') }}" class="text-sm text-blue-600">Nuevo paciente</a>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -15,6 +18,7 @@
                             <th>Teléfono</th>
                             <th>Plan</th>
                             <th>Estado</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +28,7 @@
                             <td>{{ $patient->phone }}</td>
                             <td>{{ $patient->plan }}</td>
                             <td>{{ $patient->status }}</td>
+                            <td><a href="{{ route('patients.show', $patient) }}" class="text-blue-600">Ver</a></td>
                         </tr>
                         @endforeach
                     </tbody>
