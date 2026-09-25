@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WeeklyCheckinController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,6 +26,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/patients/{patient}/edit', [PatientController::class, 'edit'])->name('patients.edit');
     Route::put('/patients/{patient}', [PatientController::class, 'update'])->name('patients.update');
+
+    Route::get('/patients/{patient}/weekly-checkins/create', [WeeklyCheckinController::class, 'create'])->name('weekly_checkins.create');
+    Route::post('/patients/{patient}/weekly-checkins', [WeeklyCheckinController::class, 'store'])->name('weekly_checkins.store');
 });
 
 require __DIR__.'/auth.php';
