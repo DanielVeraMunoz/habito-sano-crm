@@ -17,6 +17,32 @@
                 <p><strong>Notas:</strong> {{ $patient->notes }}</p>
                 <p><strong>Plan de dieta:</strong> {{ $patient->diet_plan }}</p>
             </div>
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 mt-6">
+                <h3 class="font-semibold text-lg mb-4">Check-ins semanales</h3>
+
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Peso</th>
+                            <th>Hábitos</th>
+                            <th>Observaciones</th>
+                            <th>5 comidas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($weeklyCheckins as $checkin)
+                        <tr>
+                            <td>{{ $checkin->date->format('d/m/Y') }}</td>
+                            <td>{{ $checkin->weight }} kg</td>
+                            <td>{{ $checkin->habits }}</td>
+                            <td>{{ $checkin->notes }}</td>
+                            <td>{{ $checkin->five_meals ? 'Sí' : 'No' }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </x-app-layout>
