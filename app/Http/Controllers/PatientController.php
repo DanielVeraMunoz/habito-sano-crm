@@ -36,7 +36,9 @@ class PatientController extends Controller
 
     public function show(Patient $patient): View
     {
-        return view('patients.show', ['patient' => $patient]);
+        $weeklyCheckins = $patient->weeklyCheckins()->orderBy('date', 'desc')->get();
+
+        return view('patients.show', ['patient' => $patient, 'weeklyCheckins' => $weeklyCheckins]);
     }
 
     public function edit(Patient $patient): View
